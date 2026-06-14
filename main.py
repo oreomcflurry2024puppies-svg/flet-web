@@ -460,7 +460,7 @@ def main(page: ft.Page):
         ])
     )
 
-    # 3. Individual Portfolio Reflection Section - MineShield Focus with Video
+    # 3. Individual Portfolio Reflection Section - MineShield Focus (NO VIDEO)
     contribution_section = ft.Container(
         key="contribution",
         bgcolor=LIGHT_BG,
@@ -506,40 +506,6 @@ def main(page: ft.Page):
                             ),
                         ),
                     ],
-                ),
-                ft.Container(
-                    bgcolor=LIGHT_BG,
-                    padding=20,
-                    border_radius=8,
-                    border=get_uniform_border(1, BORDER_COLOR),
-                    content=ft.Column(
-                        controls=[
-                            ft.Text("MineShield Showcase Video", size=18, weight=ft.FontWeight.BOLD, color=DEEP_NAVY),
-                            ft.Text("Final project demonstration recording for Mine Safety Monitoring System.", color=TEXT_GREY, size=13),
-                            ft.Container(height=10),
-                            ft.Container(
-                                content=ftv.Video(
-                                    expand=True,
-                                    playlist=[ftv.VideoMedia("/video/video.mp4")],
-                                    playlist_mode=ftv.PlaylistMode.LOOP,
-                                    fill_color=PRIMARY_BLUE,
-                                    aspect_ratio=16/9,
-                                    volume=100,
-                                    autoplay=True,
-                                    show_controls=True,
-                                    filter_quality=ft.FilterQuality.HIGH,
-                                    muted=False,
-                                    wakelock=True,
-                                    on_loaded=lambda e: print("Video loaded successfully!"),
-                                    on_complete=lambda e: print("Video completed!"),
-                                    on_enter_fullscreen=lambda e: print("Video entered fullscreen!"),
-                                    on_exit_fullscreen=lambda e: print("Video exited fullscreen!"),
-                                ),
-                                border_radius=10,
-                                clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
-                            ),
-                        ],
-                    ),
                 ),
             ],
         ),
@@ -663,7 +629,7 @@ def main(page: ft.Page):
         ),
     )
 
-    # 6. Technical Blog Section - Electrical Engineering focus with videos
+    # 6. Technical Blog Section - Electrical Engineering focus with VIDEO (only here)
     blog_section = ft.Container(
         key="blog",
         bgcolor=LIGHT_BG,
@@ -694,23 +660,6 @@ def main(page: ft.Page):
                                         content=ft.Text("V = I × R   |   P = I² × R   |   I = V / R", font_family="monospace", size=14, color=PRIMARY_BLUE),
                                     ),
                                     ft.Text("Understanding these relationships is crucial for circuit protection, load calculation, and system design in industrial environments.", color=TEXT_GREY, size=13),
-                                    ft.Container(
-                                        content=ftv.Video(
-                                            expand=True,
-                                            playlist=[ftv.VideoMedia("/video/video.mp4")],
-                                            playlist_mode=ftv.PlaylistMode.LOOP,
-                                            fill_color=ACCENT_BLUE,
-                                            aspect_ratio=16/9,
-                                            volume=100,
-                                            autoplay=True,
-                                            show_controls=True,
-                                            filter_quality=ft.FilterQuality.HIGH,
-                                            muted=False,
-                                            wakelock=True,
-                                        ),
-                                        border_radius=8,
-                                        clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
-                                    ),
                                 ],
                             ),
                         ),
@@ -723,15 +672,8 @@ def main(page: ft.Page):
                             content=ft.Column(
                                 spacing=12,
                                 controls=[
-                                    ft.Text("Signal Processing for Smart Monitoring Systems", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_BLUE),
-                                    ft.Text("Filtering and analyzing sensor data for reliable monitoring in safety-critical environments like mining operations.", color=TEXT_GREY, size=13),
-                                    ft.Container(
-                                        bgcolor=LIGHT_BG,
-                                        padding=14,
-                                        border_radius=6,
-                                        content=ft.Text("y(t) = x(t) * h(t)   |   FFT: X(ω) = ∫x(t)e⁻ʲωᵗdt", font_family="monospace", size=14, color=PRIMARY_BLUE),
-                                    ),
-                                    ft.Text("Proper signal processing removes noise, extracts meaningful patterns, and enables accurate anomaly detection in industrial monitoring systems.", color=TEXT_GREY, size=13),
+                                    ft.Text("MineShield Project Demonstration", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_BLUE),
+                                    ft.Text("Video showcase of the MineShield mine safety monitoring system in action.", color=TEXT_GREY, size=13),
                                     ft.Container(
                                         content=ftv.Video(
                                             expand=True,
@@ -749,6 +691,7 @@ def main(page: ft.Page):
                                         border_radius=8,
                                         clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
                                     ),
+                                    ft.Text("Watch the full demonstration of sensor integration, dashboard monitoring, and alert systems.", color=TEXT_GREY, size=12),
                                 ],
                             ),
                         ),
