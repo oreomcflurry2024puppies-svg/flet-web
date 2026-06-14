@@ -460,7 +460,7 @@ def main(page: ft.Page):
         ])
     )
 
-    # 3. Individual Portfolio Reflection Section - MineShield Focus (NO VIDEO)
+    # 3. Individual Portfolio Reflection Section - EM Lab Focus (NO VIDEO)
     contribution_section = ft.Container(
         key="contribution",
         bgcolor=LIGHT_BG,
@@ -468,7 +468,7 @@ def main(page: ft.Page):
         content=ft.Column(
             spacing=20,
             controls=[
-                create_section_header("INDIVIDUAL CONTRIBUTION PORTFOLIO", "Reflection, evidence, lessons learned, challenges, and showcase material from MineShield project."),
+                create_section_header("INDIVIDUAL CONTRIBUTION PORTFOLIO", "Reflection, evidence, lessons learned, challenges, and showcase material from EM Lab project."),
                 ft.ResponsiveRow(
                     spacing=20,
                     run_spacing=20,
@@ -476,8 +476,8 @@ def main(page: ft.Page):
                         ft.Container(
                             col={"sm": 12, "md": 6},
                             content=create_info_card(
-                                "MineShield Project Contribution",
-                                "Contributed to the MineShield Mine Safety Monitoring System through visitor mode implementation, dashboard testing, emergency contact validation, APK deployment, and FR-014 compliance verification.",
+                                "EM Lab Project Contribution",
+                                "Contributed to the EM Lab project through visitor mode implementation, dashboard testing, emergency contact validation, APK deployment, and FR-014 compliance verification.",
                                 ft.Icons.ENGINEERING,
                             ),
                         ),
@@ -511,7 +511,7 @@ def main(page: ft.Page):
         ),
     )
 
-    # 4. Timeline Section - MineShield focused
+    # 4. Timeline Section - EM Lab focused
     timeline_section = ft.Container(
         key="timeline",
         bgcolor=LIGHT_BG,
@@ -519,7 +519,7 @@ def main(page: ft.Page):
         content=ft.Column(
             spacing=20,
             controls=[
-                create_section_header("PROJECT TIMELINE", "Weekly log of my specific contributions to the MineShield Mine Safety Monitoring System project."),
+                create_section_header("PROJECT TIMELINE", "Weekly log of my specific contributions to the EM Lab project."),
                 ft.Container(
                     bgcolor=BG_WHITE,
                     padding=25,
@@ -529,15 +529,15 @@ def main(page: ft.Page):
                         spacing=15,
                         controls=[
                             ft.Text("Week 01 - Requirements Gathering and FR-014 Review", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_BLUE),
-                            ft.Text("Reviewed the semester brief for MineShield project, mapped mine safety requirements, and documented system specifications for FR-014 compliance verification.", color=TEXT_GREY),
+                            ft.Text("Reviewed the semester brief for EM Lab project, mapped requirements, and documented system specifications for FR-014 compliance verification.", color=TEXT_GREY),
                             ft.Divider(color=BORDER_COLOR),
                             ft.Text("Week 02 - Dashboard Testing and Visitor Mode Verification", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_BLUE),
-                            ft.Text("Performed comprehensive dashboard testing, implemented visitor mode functionality, and verified user access controls for the safety monitoring platform.", color=TEXT_GREY),
+                            ft.Text("Performed comprehensive dashboard testing, implemented visitor mode functionality, and verified user access controls for the monitoring platform.", color=TEXT_GREY),
                             ft.Divider(color=BORDER_COLOR),
                             ft.Text("Week 03 - Emergency Contact Validation and APK Deployment", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_BLUE),
                             ft.Text("Validated emergency contact system integration, conducted APK deployment testing, and prepared build for demonstration.", color=TEXT_GREY),
                             ft.Divider(color=BORDER_COLOR),
-                            ft.Text("Week 04 - Final MineShield Integration and Documentation", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_BLUE),
+                            ft.Text("Week 04 - Final EM Lab Integration and Documentation", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_BLUE),
                             ft.Text("Completed final system integration, prepared documentation, captured testing evidence, and aligned portfolio for presentation showcase.", color=TEXT_GREY),
                         ],
                     ),
@@ -546,7 +546,7 @@ def main(page: ft.Page):
         ),
     )
 
-    # 5. MineShield Safety Engineering Projects Section
+    # 5. EM Lab Projects Section
     project_section = ft.Container(
         key="projects",
         bgcolor=BG_WHITE,
@@ -554,7 +554,7 @@ def main(page: ft.Page):
         content=ft.Column(
             spacing=20,
             controls=[
-                create_section_header("MINESHIELD SAFETY ENGINEERING PROJECTS", "Advanced safety monitoring solutions for mining environments."),
+                create_section_header("EM LAB PROJECTS", "Advanced monitoring solutions for engineering environments."),
                 ft.ResponsiveRow(
                     spacing=20,
                     run_spacing=20,
@@ -568,8 +568,8 @@ def main(page: ft.Page):
                             content=ft.Column(
                                 spacing=12,
                                 controls=[
-                                    ft.Text("1. MineShield App", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_BLUE),
-                                    ft.Text("Comprehensive mine safety monitoring platform designed to improve miner safety through real-time environmental monitoring, emergency response integration, and intelligent alert systems.", color=TEXT_GREY, size=14),
+                                    ft.Text("1. EM Lab Application", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_BLUE),
+                                    ft.Text("Comprehensive monitoring platform designed to improve safety through real-time environmental monitoring, emergency response integration, and intelligent alert systems.", color=TEXT_GREY, size=14),
                                     ft.Container(
                                         bgcolor=LIGHT_BG,
                                         padding=12,
@@ -582,7 +582,7 @@ def main(page: ft.Page):
                                             ft.Text("• GitHub for version control and collaboration", size=12, font_family="monospace", color=ACCENT_BLUE),
                                         ])
                                     ),
-                                    ft.Text("Enables mine operators to monitor environmental conditions, receive alerts, and coordinate emergency responses from a unified platform.", color=TEXT_GREY, size=12),
+                                    ft.Text("Enables operators to monitor environmental conditions, receive alerts, and coordinate emergency responses from a unified platform.", color=TEXT_GREY, size=12),
                                     ft.Row([
                                         ft.Container(content=ft.Text("Python", size=11, color=BG_WHITE), bgcolor=PRIMARY_BLUE, padding=5, border_radius=4),
                                         ft.Container(content=ft.Text("Flet", size=11, color=DEEP_NAVY), bgcolor=LIGHT_BG, padding=5, border_radius=4),
@@ -600,8 +600,8 @@ def main(page: ft.Page):
                             content=ft.Column(
                                 spacing=12,
                                 controls=[
-                                    ft.Text("2. MineShield Sensor Network Design", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_BLUE),
-                                    ft.Text("Sensor architecture for environmental and seismic monitoring using ESP32-based nodes with real-time data acquisition and transmission capabilities.", color=TEXT_GREY, size=14),
+                                    ft.Text("2. EM Lab Sensor Network Design", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_BLUE),
+                                    ft.Text("Sensor architecture for environmental monitoring using ESP32-based nodes with real-time data acquisition and transmission capabilities.", color=TEXT_GREY, size=14),
                                     ft.Container(
                                         bgcolor=LIGHT_BG,
                                         padding=12,
@@ -614,7 +614,7 @@ def main(page: ft.Page):
                                             ft.Text("• ESP32 Controller with WiFi/BLE", size=12, font_family="monospace", color=ACCENT_BLUE),
                                         ])
                                     ),
-                                    ft.Text("Enables continuous environmental monitoring with early warning capabilities for hazardous gas levels and seismic activity detection.", color=TEXT_GREY, size=12),
+                                    ft.Text("Enables continuous environmental monitoring with early warning capabilities for hazardous gas levels and activity detection.", color=TEXT_GREY, size=12),
                                     ft.Row([
                                         ft.Container(content=ft.Text("ESP32", size=11, color=BG_WHITE), bgcolor=PRIMARY_BLUE, padding=5, border_radius=4),
                                         ft.Container(content=ft.Text("IoT Sensors", size=11, color=DEEP_NAVY), bgcolor=LIGHT_BG, padding=5, border_radius=4),
@@ -672,8 +672,8 @@ def main(page: ft.Page):
                             content=ft.Column(
                                 spacing=12,
                                 controls=[
-                                    ft.Text("MineShield Project Demonstration", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_BLUE),
-                                    ft.Text("Video showcase of the MineShield mine safety monitoring system in action.", color=TEXT_GREY, size=13),
+                                    ft.Text("EM Lab Project Demonstration", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_BLUE),
+                                    ft.Text("Video showcase of the EM Lab monitoring system in action.", color=TEXT_GREY, size=13),
                                     ft.Container(
                                         content=ftv.Video(
                                             expand=True,
@@ -734,8 +734,8 @@ def main(page: ft.Page):
                             border=get_uniform_border(1, BORDER_COLOR),
                             content=ft.Column([
                                 ft.Icon(ft.Icons.SETTINGS, color=PRIMARY_BLUE, size=28),
-                                ft.Text("MineShield Development Team", size=16, weight=ft.FontWeight.BOLD, color=DEEP_NAVY),
-                                ft.Text("Core contributor to MineShield mine safety monitoring system development, testing, and documentation.", color=TEXT_GREY, size=13),
+                                ft.Text("EM Lab Development Team", size=16, weight=ft.FontWeight.BOLD, color=DEEP_NAVY),
+                                ft.Text("Core contributor to EM Lab monitoring system development, testing, and documentation.", color=TEXT_GREY, size=13),
                             ])
                         ),
                         ft.Container(
@@ -756,7 +756,7 @@ def main(page: ft.Page):
         )
     )
 
-    # 8. MATLAB Achievement Hub Section - Updated with your actual files
+    # 8. MATLAB Achievement Hub Section
     certificate_data = [
         {"title": "MATLAB Onramp", "file": "matlab onramp certificate ozil_page-0001.jpg"},
         {"title": "Simulink Onramp", "file": "simulink onramp certificate ozil_page-0001.jpg"},
@@ -855,7 +855,7 @@ def main(page: ft.Page):
                     controls=[
                         ft.Column([
                             ft.Text("GITHUB EVIDENCE & DOCUMENTATION", size=28, weight=ft.FontWeight.BOLD, color=PRIMARY_BLUE),
-                            ft.Text("Verifiable individual contribution records for MineShield safety project development.", size=15, color=TEXT_GREY),
+                            ft.Text("Verifiable individual contribution records for EM Lab project development.", size=15, color=TEXT_GREY),
                         ]),
                         ft.IconButton(icon=ft.Icons.CODE, icon_color=PRIMARY_BLUE, tooltip="GitHub Evidence")
                     ]
@@ -868,7 +868,7 @@ def main(page: ft.Page):
                             col={"sm": 12, "md": 4},
                             content=create_info_card(
                                 "Commit History",
-                                "Screenshots showing commits authored by Henock Nahango in the MineShield repository, including dates, messages, and linked files.",
+                                "Screenshots showing commits authored by Henock Nahango in the EM Lab repository, including dates, messages, and linked files.",
                                 ft.Icons.COMMIT,
                             ),
                         ),
@@ -876,7 +876,7 @@ def main(page: ft.Page):
                             col={"sm": 12, "md": 4},
                             content=create_info_card(
                                 "Pull Request Logs",
-                                "Documentation of proposed features, reviews performed, comments resolved, and merges completed during MineShield development.",
+                                "Documentation of proposed features, reviews performed, comments resolved, and merges completed during EM Lab development.",
                                 ft.Icons.MERGE,
                             ),
                         ),
@@ -884,7 +884,7 @@ def main(page: ft.Page):
                             col={"sm": 12, "md": 4},
                             content=create_info_card(
                                 "Impact Summary",
-                                "My code and documentation improved sensor integration, dashboard functionality, and explained engineering outputs for mine safety compliance.",
+                                "My code and documentation improved sensor integration, dashboard functionality, and explained engineering outputs for compliance.",
                                 ft.Icons.INSIGHTS,
                             ),
                         ),
@@ -903,8 +903,8 @@ def main(page: ft.Page):
                             content=ft.Column(
                                 spacing=12,
                                 controls=[
-                                    ft.Row([ft.Icon(ft.Icons.FOLDER_SPECIAL, color=PRIMARY_BLUE), ft.Text("MineShield-App", size=16, weight=ft.FontWeight.BOLD, color=DEEP_NAVY)]),
-                                    ft.Text("Python/Flet based mine safety monitoring platform with real-time alerts and emergency response features.", size=13, color=TEXT_GREY),
+                                    ft.Row([ft.Icon(ft.Icons.FOLDER_SPECIAL, color=PRIMARY_BLUE), ft.Text("EM-Lab-App", size=16, weight=ft.FontWeight.BOLD, color=DEEP_NAVY)]),
+                                    ft.Text("Python/Flet based monitoring platform with real-time alerts and emergency response features.", size=13, color=TEXT_GREY),
                                     ft.Row(wrap=True, spacing=5, controls=[
                                         ft.Container(content=ft.Text("Python", size=10, color=BG_WHITE), bgcolor=PRIMARY_BLUE, padding=4, border_radius=4),
                                         ft.Container(content=ft.Text("Flet", size=10, color=DEEP_NAVY), bgcolor=LIGHT_BG, padding=4, border_radius=4),
@@ -927,7 +927,7 @@ def main(page: ft.Page):
                             content=ft.Column(
                                 spacing=12,
                                 controls=[
-                                    ft.Row([ft.Icon(ft.Icons.FOLDER, color=PRIMARY_BLUE), ft.Text("Sensor-Network-ESP32", size=16, weight=ft.FontWeight.BOLD, color=DEEP_NAVY)]),
+                                    ft.Row([ft.Icon(ft.Icons.FOLDER, color=PRIMARY_BLUE), ft.Text("EM-Lab-Sensor-Network", size=16, weight=ft.FontWeight.BOLD, color=DEEP_NAVY)]),
                                     ft.Text("ESP32-based sensor network for environmental monitoring with gas, temperature, and vibration sensors.", size=13, color=TEXT_GREY),
                                     ft.Row(wrap=True, spacing=5, controls=[
                                         ft.Container(content=ft.Text("Embedded C", size=10, color=BG_WHITE), bgcolor=PRIMARY_BLUE, padding=4, border_radius=4),
@@ -947,7 +947,7 @@ def main(page: ft.Page):
         ),
     )
 
-    # 10. Contact Section Form Setup - Updated with Electrical Engineering info
+    # 10. Contact Section Form Setup
     name_field = ft.TextField(label="Your Full Name", border_color=PRIMARY_BLUE, focused_border_color=ACCENT_BLUE)
     email_field = ft.TextField(label="Email Address", border_color=PRIMARY_BLUE, focused_border_color=ACCENT_BLUE)
     message_field = ft.TextField(label="Project Details / Inquiry Message", multiline=True, min_lines=4, border_color=PRIMARY_BLUE, focused_border_color=ACCENT_BLUE)
