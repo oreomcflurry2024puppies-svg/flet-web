@@ -21,6 +21,7 @@ def main(page: ft.Page):
     # =========================================================
     PRIMARY_BLUE = "#1a3a5c"           # Deep Navy Blue
     ACCENT_BLUE = "#2c5f8a"            # Medium Blue
+    PRIMARY_ORANGE = "#e67e22"         # Orange for zoom dialogs
     DEEP_NAVY = "#0d2137"              # Dark Navy for text/buttons
     LIGHT_BG = "#f0f4f8"               # Light blue-tint background
     SECTION_BLUE = "#e8f0f8"           # Very light blue section
@@ -40,68 +41,31 @@ def main(page: ft.Page):
     SHADOW_BLUE = "#b0c4de"
     CERT_HINT = "#c5d5e8"
 
-    # Global variable to track active dialog
-    active_dialog = None
-
-    # Helper function to get correct asset path for Render
-    def get_asset_path(filename):
-        """Get the correct path for asset files (works locally and on Render)"""
-        # Try multiple possible locations
-        possible_paths = [
-            filename,  # direct filename
-            f"assets/{filename}",  # assets subfolder
-            f"./assets/{filename}",  # relative assets
-            os.path.join("assets", filename),  # platform-independent
-        ]
-        
-        for path in possible_paths:
-            if os.path.exists(path):
-                print(f"Found asset: {path}")
-                return path
-        
-        # If file not found, return the assets path as fallback
-        print(f"Warning: Asset not found: {filename}")
-        return f"assets/{filename}"
-
+    # =========================================================
+    # ZOOM FUNCTIONS - FIXED VERSION
+    # =========================================================
     def open_certificate_zoom(title: str, image_file: str):
-        global active_dialog
-        
-        # Get correct path for the image
-        correct_path = get_asset_path(image_file)
-        
-        # Create dialog content
         zoom_dialog = ft.AlertDialog(
             modal=True,
-            title=ft.Text(title, color=PRIMARY_BLUE, weight=ft.FontWeight.BOLD),
+            title=ft.Text(title, color=PRIMARY_ORANGE, weight=ft.FontWeight.BOLD),
             content=ft.Container(
                 width=900,
                 height=620,
                 bgcolor=BG_WHITE,
                 padding=10,
                 border_radius=8,
-                content=ft.Image(src=correct_path, fit="contain"),
+                content=ft.Image(src=f"assets/{image_file}", fit="contain"),
             ),
             actions=[
-                ft.TextButton(
-                    "Close", 
-                    on_click=lambda e: close_certificate_zoom(),
-                    style=ft.ButtonStyle(color=PRIMARY_BLUE)
-                ),
+                ft.TextButton("Close", on_click=lambda e: close_certificate_zoom(zoom_dialog)),
             ],
             actions_alignment=ft.MainAxisAlignment.END,
         )
-        
-        active_dialog = zoom_dialog
-        page.dialog = zoom_dialog
-        zoom_dialog.open = True
-        page.update()
+        page.open(zoom_dialog)
 
-    def close_certificate_zoom():
-        global active_dialog
-        if active_dialog:
-            active_dialog.open = False
-            page.update()
-            active_dialog = None
+    def close_certificate_zoom(dialog):
+        dialog.open = False
+        page.update()
 
     def get_uniform_border(width: int, color: str):
         return ft.Border(
@@ -197,9 +161,6 @@ def main(page: ft.Page):
     # SECTIONS DEFINITIONS
     # =========================================================
     
-    # Get correct profile picture path
-    profile_pic_path = get_asset_path("ozil picture.jpg")
-    
     # 1. Overview Section - WITH LARGER PROFILE PICTURE
     hero_section = ft.Container(
         key="overview",
@@ -246,7 +207,7 @@ def main(page: ft.Page):
                             bgcolor=AVATAR_BG,
                             alignment=ft.Alignment(0, 0),
                             border=get_uniform_border(4, PRIMARY_BLUE),
-                            content=ft.Image(src=profile_pic_path, width=280, height=280, border_radius=140, fit="cover"),
+                            content=ft.Image(src="assets/ozil picture.jpg", width=280, height=280, border_radius=140, fit="cover"),
                         ),
                         ft.Container(height=8),
                         ft.Text("Electrical Engineering & Mine Safety Systems 2026", size=12, color=SUBTEXT_GREY, italic=True),
@@ -613,7 +574,7 @@ def main(page: ft.Page):
         )
     )
 
-    # 8. MATLAB Achievement Hub Section - Using your actual image files with fixed paths
+    # 8. MATLAB Achievement Hub Section - With FIXED zoom function
     certificate_data = [
         {"title": "Calculations with Vectors", "file": "calculations with vertor certificate ozil_page-0001.jpg"},
         {"title": "Core MATLAB Skills", "file": "core matlab skills certificate ozil_page-0001.jpg"},
@@ -627,11 +588,8 @@ def main(page: ft.Page):
 
     cert_cards = []
     for cert in certificate_data:
-        # Get correct path for certificate image
-        cert_path = get_asset_path(cert['file'])
-        
         img_control = ft.Image(
-            src=cert_path,
+            src=f"assets/{cert['file']}",
             height=150,
             fit="contain", 
             scale=1.0,
@@ -1069,24 +1027,18 @@ def main(page: ft.Page):
     )
 
 # =========================================================
-# UPDATED RENDER DEPLOYMENT CONFIGURATION - FIXES "NOT FOUND" ERROR
+# RENDER DEPLOYMENT CONFIGURATION
 # =========================================================
 if __name__ == "__main__":
     # Get the port from environment variable (Render sets this automatically)
     port = int(os.environ.get("PORT", 8080))
     
-    # Print debug info to Render logs
     print(f"Starting Flet application on port {port}")
-    print(f"Current working directory: {os.getcwd()}")
-    print(f"Assets directory exists: {os.path.exists('assets')}")
-    if os.path.exists('assets'):
-        print(f"Files in assets: {os.listdir('assets')}")
     
     # CRUCIAL: host="0.0.0.0" allows Render to route external traffic to your app
-    # view=ft.AppView.WEB_BROWSER ensures web rendering mode
     ft.app(
         target=main, 
-        host="0.0.0.0",  # ← MUST be 0.0.0.0 for Render
+        host="0.0.0.0",
         port=port, 
         view=ft.AppView.WEB_BROWSER,
         assets_dir="assets"
