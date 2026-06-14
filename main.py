@@ -1038,11 +1038,23 @@ def main(page: ft.Page):
         )
     )
 
-# For Render deployment - use production-ready configuration
-if __name__=="__main__":
+# =========================================================
+# UPDATED RENDER DEPLOYMENT CONFIGURATION - FIXES "NOT FOUND" ERROR
+# =========================================================
+if __name__ == "__main__":
+    # Get the port from environment variable (Render sets this automatically)
+    port = int(os.environ.get("PORT", 8080))
+    
+    # Print debug info to Render logs
+    print(f"Starting Flet application on port {port}")
+    print(f"Assets directory: {os.path.join(os.path.dirname(__file__), 'assets')}")
+    
+    # CRUCIAL: host="0.0.0.0" allows Render to route external traffic to your app
+    # view=ft.AppView.WEB_BROWSER ensures web rendering mode
     ft.app(
-        target=main,
+        target=main, 
+        host="0.0.0.0",  # ← MUST be 0.0.0.0 for Render
+        port=port, 
         view=ft.AppView.WEB_BROWSER,
-        assets_dir="assets",
-        port=int(os.environ.get("PORT", 8550)),
+        assets_dir="assets"
     )
