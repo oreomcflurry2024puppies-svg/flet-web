@@ -1,5 +1,6 @@
 import os
 import flet as ft
+import flet_video as ftv
 
 def main(page: ft.Page):
 
@@ -459,7 +460,7 @@ def main(page: ft.Page):
         ])
     )
 
-    # 3. Individual Portfolio Reflection Section - MineShield Focus
+    # 3. Individual Portfolio Reflection Section - MineShield Focus with Video
     contribution_section = ft.Container(
         key="contribution",
         bgcolor=LIGHT_BG,
@@ -511,14 +512,32 @@ def main(page: ft.Page):
                     padding=20,
                     border_radius=8,
                     border=get_uniform_border(1, BORDER_COLOR),
-                    content=ft.Row(
-                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    content=ft.Column(
                         controls=[
-                            ft.Column([
-                                ft.Text("MineShield Showcase Video", size=18, weight=ft.FontWeight.BOLD, color=DEEP_NAVY),
-                                ft.Text("Final project demonstration recording for Mine Safety Monitoring System.", color=TEXT_GREY, size=13),
-                            ]),
-                            ft.TextButton("Video Link Placeholder", icon=ft.Icons.VIDEO_LIBRARY, url="https://example.com/mineshield-video", style=ft.ButtonStyle(color=ACCENT_BLUE)),
+                            ft.Text("MineShield Showcase Video", size=18, weight=ft.FontWeight.BOLD, color=DEEP_NAVY),
+                            ft.Text("Final project demonstration recording for Mine Safety Monitoring System.", color=TEXT_GREY, size=13),
+                            ft.Container(height=10),
+                            ft.Container(
+                                content=ftv.Video(
+                                    expand=True,
+                                    playlist=[ftv.VideoMedia("/video/video.mp4")],
+                                    playlist_mode=ftv.PlaylistMode.LOOP,
+                                    fill_color=PRIMARY_BLUE,
+                                    aspect_ratio=16/9,
+                                    volume=100,
+                                    autoplay=True,
+                                    show_controls=True,
+                                    filter_quality=ft.FilterQuality.HIGH,
+                                    muted=False,
+                                    wakelock=True,
+                                    on_loaded=lambda e: print("Video loaded successfully!"),
+                                    on_complete=lambda e: print("Video completed!"),
+                                    on_enter_fullscreen=lambda e: print("Video entered fullscreen!"),
+                                    on_exit_fullscreen=lambda e: print("Video exited fullscreen!"),
+                                ),
+                                border_radius=10,
+                                clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
+                            ),
                         ],
                     ),
                 ),
@@ -644,7 +663,7 @@ def main(page: ft.Page):
         ),
     )
 
-    # 6. Technical Blog Section - Electrical Engineering focus
+    # 6. Technical Blog Section - Electrical Engineering focus with videos
     blog_section = ft.Container(
         key="blog",
         bgcolor=LIGHT_BG,
@@ -652,7 +671,7 @@ def main(page: ft.Page):
         content=ft.Column(
             spacing=20,
             controls=[
-                create_section_header("TECHNICAL BLOG: ELECTRICAL ENGINEERING INSIGHTS", "Written technical explanations with embedded video placeholders."),
+                create_section_header("TECHNICAL BLOG: ELECTRICAL ENGINEERING INSIGHTS", "Written technical explanations with embedded video demonstrations."),
                 ft.ResponsiveRow(
                     spacing=20,
                     run_spacing=20,
@@ -675,7 +694,23 @@ def main(page: ft.Page):
                                         content=ft.Text("V = I × R   |   P = I² × R   |   I = V / R", font_family="monospace", size=14, color=PRIMARY_BLUE),
                                     ),
                                     ft.Text("Understanding these relationships is crucial for circuit protection, load calculation, and system design in industrial environments.", color=TEXT_GREY, size=13),
-                                    ft.TextButton("Embedded Video Insert", icon=ft.Icons.PLAY_CIRCLE, url="https://example.com/ohms-law-video", style=ft.ButtonStyle(color=ACCENT_BLUE)),
+                                    ft.Container(
+                                        content=ftv.Video(
+                                            expand=True,
+                                            playlist=[ftv.VideoMedia("/video/video.mp4")],
+                                            playlist_mode=ftv.PlaylistMode.LOOP,
+                                            fill_color=ACCENT_BLUE,
+                                            aspect_ratio=16/9,
+                                            volume=100,
+                                            autoplay=True,
+                                            show_controls=True,
+                                            filter_quality=ft.FilterQuality.HIGH,
+                                            muted=False,
+                                            wakelock=True,
+                                        ),
+                                        border_radius=8,
+                                        clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
+                                    ),
                                 ],
                             ),
                         ),
@@ -697,7 +732,23 @@ def main(page: ft.Page):
                                         content=ft.Text("y(t) = x(t) * h(t)   |   FFT: X(ω) = ∫x(t)e⁻ʲωᵗdt", font_family="monospace", size=14, color=PRIMARY_BLUE),
                                     ),
                                     ft.Text("Proper signal processing removes noise, extracts meaningful patterns, and enables accurate anomaly detection in industrial monitoring systems.", color=TEXT_GREY, size=13),
-                                    ft.TextButton("Embedded Video Insert", icon=ft.Icons.PLAY_CIRCLE, url="https://example.com/signal-processing-video", style=ft.ButtonStyle(color=ACCENT_BLUE)),
+                                    ft.Container(
+                                        content=ftv.Video(
+                                            expand=True,
+                                            playlist=[ftv.VideoMedia("/video/video.mp4")],
+                                            playlist_mode=ftv.PlaylistMode.LOOP,
+                                            fill_color=ACCENT_BLUE,
+                                            aspect_ratio=16/9,
+                                            volume=100,
+                                            autoplay=True,
+                                            show_controls=True,
+                                            filter_quality=ft.FilterQuality.HIGH,
+                                            muted=False,
+                                            wakelock=True,
+                                        ),
+                                        border_radius=8,
+                                        clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
+                                    ),
                                 ],
                             ),
                         ),
