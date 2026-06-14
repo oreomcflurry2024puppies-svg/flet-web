@@ -1,7 +1,5 @@
 import os
 import flet as ft
-import webbrowser
-import threading
 
 def main(page: ft.Page):
 
@@ -203,7 +201,7 @@ def main(page: ft.Page):
                                     bgcolor=AVATAR_BG,
                                     alignment=ft.Alignment(0, 0),
                                     border=get_uniform_border(4, PRIMARY_BLUE),
-                                    content=ft.Image(src="/images/profile.jpeg", width=220, height=220, border_radius=110, fit="cover"),
+                                    content=ft.Image(src="/images/ozil picture.jpg", width=220, height=220, border_radius=110, fit="cover"),
                                 ),
                                 ft.Container(height=8),
                                 ft.Text("Electrical Engineering - Class of 2026", size=12, color=SUBTEXT_GREY, italic=True),
@@ -764,16 +762,16 @@ def main(page: ft.Page):
         )
     )
 
-    # 8. MATLAB Achievement Hub Section - Updated with provided file names
+    # 8. MATLAB Achievement Hub Section - Updated with your actual files
     certificate_data = [
-        {"title": "MATLAB Onramp", "file": "MATLAB Onramp.jpg"},
-        {"title": "Simulink Onramp", "file": "Simulink Onramp.jpg"},
+        {"title": "MATLAB Onramp", "file": "matlab onramp certificate ozil_page-0001.jpg"},
+        {"title": "Simulink Onramp", "file": "simulink onramp certificate ozil_page-0001.jpg"},
+        {"title": "Core MATLAB Skills", "file": "core matlab skills certificate ozil_page-0001.jpg"},
         {"title": "Calculations with Vectors", "file": "calculations with vertor certificate ozil_page-0001.jpg"},
-        {"title": "Finite Element Analysis", "file": "finite element analysis ozil_page-0001.jpg"},
-        {"title": "Explore Data with MATLAB", "file": "explore data ozil_page-0001.jpg"},
-        {"title": "Dates and Times", "file": "dates and times ozil_page-0001.jpg"},
-        {"title": "Make and Manipulate Matrices", "file": "matrices ozil_page-0001.jpg"},
-        {"title": "Additional MATLAB Certificate", "file": "certificate8.jpg"},
+        {"title": "Machine Learning Onramp", "file": "machine learning onramp certificate ozil additional_page-0001.jpg"},
+        {"title": "Simulink Fundamentals", "file": "simulink fundamental certificate ozil_page-0001.jpg"},
+        {"title": "The How and Why of Writing Functions", "file": "the how and why of writig functions certificate ozil additional_page-0001.jpg"},
+        {"title": "Visualization in MATLAB", "file": "visualization in matlab certificate ozil_page-0001.jpg"},
     ]
 
     cert_cards = []
