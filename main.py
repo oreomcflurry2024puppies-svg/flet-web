@@ -2,6 +2,7 @@ import os
 import flet as ft
 import webbrowser
 import threading
+from pathlib import Path
 
 def main(page: ft.Page):
 
@@ -42,8 +43,31 @@ def main(page: ft.Page):
     # Global variable to track active dialog
     active_dialog = None
 
+    # Helper function to get correct asset path for Render
+    def get_asset_path(filename):
+        """Get the correct path for asset files (works locally and on Render)"""
+        # Try multiple possible locations
+        possible_paths = [
+            filename,  # direct filename
+            f"assets/{filename}",  # assets subfolder
+            f"./assets/{filename}",  # relative assets
+            os.path.join("assets", filename),  # platform-independent
+        ]
+        
+        for path in possible_paths:
+            if os.path.exists(path):
+                print(f"Found asset: {path}")
+                return path
+        
+        # If file not found, return the assets path as fallback
+        print(f"Warning: Asset not found: {filename}")
+        return f"assets/{filename}"
+
     def open_certificate_zoom(title: str, image_file: str):
         global active_dialog
+        
+        # Get correct path for the image
+        correct_path = get_asset_path(image_file)
         
         # Create dialog content
         zoom_dialog = ft.AlertDialog(
@@ -55,7 +79,7 @@ def main(page: ft.Page):
                 bgcolor=BG_WHITE,
                 padding=10,
                 border_radius=8,
-                content=ft.Image(src=image_file, fit="contain"),
+                content=ft.Image(src=correct_path, fit="contain"),
             ),
             actions=[
                 ft.TextButton(
@@ -173,6 +197,9 @@ def main(page: ft.Page):
     # SECTIONS DEFINITIONS
     # =========================================================
     
+    # Get correct profile picture path
+    profile_pic_path = get_asset_path("ozil picture.jpg")
+    
     # 1. Overview Section - WITH LARGER PROFILE PICTURE
     hero_section = ft.Container(
         key="overview",
@@ -219,7 +246,7 @@ def main(page: ft.Page):
                             bgcolor=AVATAR_BG,
                             alignment=ft.Alignment(0, 0),
                             border=get_uniform_border(4, PRIMARY_BLUE),
-                            content=ft.Image(src="ozil picture.jpg", width=280, height=280, border_radius=140, fit="cover"),
+                            content=ft.Image(src=profile_pic_path, width=280, height=280, border_radius=140, fit="cover"),
                         ),
                         ft.Container(height=8),
                         ft.Text("Electrical Engineering & Mine Safety Systems 2026", size=12, color=SUBTEXT_GREY, italic=True),
@@ -586,7 +613,7 @@ def main(page: ft.Page):
         )
     )
 
-    # 8. MATLAB Achievement Hub Section - Using your actual image files
+    # 8. MATLAB Achievement Hub Section - Using your actual image files with fixed paths
     certificate_data = [
         {"title": "Calculations with Vectors", "file": "calculations with vertor certificate ozil_page-0001.jpg"},
         {"title": "Core MATLAB Skills", "file": "core matlab skills certificate ozil_page-0001.jpg"},
@@ -600,8 +627,11 @@ def main(page: ft.Page):
 
     cert_cards = []
     for cert in certificate_data:
+        # Get correct path for certificate image
+        cert_path = get_asset_path(cert['file'])
+        
         img_control = ft.Image(
-            src=cert['file'],
+            src=cert_path,
             height=150,
             fit="contain", 
             scale=1.0,
@@ -613,7 +643,7 @@ def main(page: ft.Page):
             padding=15,
             border_radius=10,
             border=get_uniform_border(1, ACCENT_BLUE),
-            on_click=lambda e, title=cert["title"], file=cert["file"]: open_certificate_zoom(title, file),
+            on_click=lambda e, title=cert["title"], file=cert['file']: open_certificate_zoom(title, file),
             content=ft.Column(
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                 controls=[
@@ -1047,7 +1077,10 @@ if __name__ == "__main__":
     
     # Print debug info to Render logs
     print(f"Starting Flet application on port {port}")
-    print(f"Assets directory: {os.path.join(os.path.dirname(__file__), 'assets')}")
+    print(f"Current working directory: {os.getcwd()}")
+    print(f"Assets directory exists: {os.path.exists('assets')}")
+    if os.path.exists('assets'):
+        print(f"Files in assets: {os.listdir('assets')}")
     
     # CRUCIAL: host="0.0.0.0" allows Render to route external traffic to your app
     # view=ft.AppView.WEB_BROWSER ensures web rendering mode
